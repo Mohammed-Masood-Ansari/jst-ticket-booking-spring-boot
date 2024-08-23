@@ -1,8 +1,10 @@
 package com.jsp.jst_ticket_booking_spring_boot.admincontroller;
 
 import com.jsp.jst_ticket_booking_spring_boot.dto.Admin;
+import com.jsp.jst_ticket_booking_spring_boot.response.ResponseStructure;
 import com.jsp.jst_ticket_booking_spring_boot.service.AdminService;
 import lombok.val;
+import org.aspectj.internal.lang.annotation.ajcDeclareParents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,5 +25,14 @@ public class AdminController {
         return adminService.findByEmailService(email);
     }
 
+    @GetMapping(value = "/loginAdminWithEmailAndPassword/{email}/{password}")
+    public ResponseStructure<Admin> loginAdminWithEmailAndPasswordController(@PathVariable String email, @PathVariable String password) {
+        return adminService.loginAdminWithEmailAndPasswordService(email,password);
+    }
 
+
+    @GetMapping(value = "/logoutAdmin")
+    public ResponseStructure<Admin> LogoutAdminController() {
+        return adminService.LogoutAdminService();
+    }
 }
