@@ -34,6 +34,8 @@ public class Train {
 
     private int duration;
 
-    private String runningdays;
+    private String departureDay;
+
+    private String arrivalDay;
 
 }
